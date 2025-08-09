@@ -163,7 +163,7 @@
         gG8FPiyk8KvXl91SQYxxTCGziqEdstITEhLaI0YHUaqNCBnKMDIEMvBIIoZqUPO9M1bAfCM1J0cM
         PzAjgAFg1DwfpPoZhimz6ZZppVfnk4A5QmoyVRAwn/mbc6yAIYHV+B5nFCCqyPDwG4ax0eNxrXph
         +VW/Eef4/1hB7euxuuTvAAAAAElFTkSuQmCC" alt="" width="60">
-            eSIM QR Generator
+            QR Generator
         </h1>
     </div>
     <div>
@@ -655,17 +655,20 @@
         document.getElementById('qrCodeDisplay').innerHTML = "";
         var svgLogo = document.getElementById('orroSVGImage');
         var qrContent = document.getElementById('eSIMNo').value;
+        console.log(qrContent.length)
+        var logoSize = qrContent.length > 120 ? 20 : 30
+        var qrImageSize = qrContent.length > 450 ? 600 : 300
         var el = kjua({
             text: qrContent,
             ecLevel: 'H',
-            size: 310,
+            size: 300,
             fill: '#00002a',
             back: '#ffffff',
-            quiet: 1,
+            quiet: 0,
             rounded: 40,
             mode: 'image',
             image: svgLogo,
-            mSize: 30
+            mSize: logoSize,
         });
         el.filename = 'helloWorld!';
         document.getElementById('qrCodeDisplay').appendChild(el);
