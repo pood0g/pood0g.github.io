@@ -4,26 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="
+                default-src 'self';
+                font-src 'self';
+                img-src 'self' data:;
+                script-src 'self' 'unsafe-inline';
+                ">
     <title>Orro eSIM QR Generator</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="css/layout.css">
 
-<style>
-    h1 {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 56px;
-        font-weight: 400;
-        line-height: 64px;
-    }
-    label, button, input {
-        font-family: "Space Grotesk", sans-serif;
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 40px;
-    }
-</style>
+</head>
 
 <body>
     <div>
@@ -34,43 +24,20 @@
     </div>
     <div>
         <label for="eSIMNo">eSIM Number:</label>
-        <input type="text" id="eSIMNo" name="eSIMNo" placeholder="Enter your eSIM number" onkeyup="handleEnterKey(this.keyCode)">
+        <input type="text" id="eSIMNo" name="eSIMNo" placeholder="Enter your eSIM number"
+            onkeyup="handleEnterKey(event.key)">
         <button onclick="generateQR()">GO!</button>
     </div>
     <!-- Empty div for QR code to display -->
     <div id="qrCodeDisplay"></div>
 </body>
-<script src="js/kjua.min.js" integrity="sha512-BYj4xggowR7QD150VLSTRlzH62YPfhpIM+b/1EUEr7RQpdWAGKulxWnOvjFx1FUlba4m6ihpNYuQab51H6XlYg==" crossorigin="anonymous"></script>
 
-<script>
-    function generateQR() {
-        document.getElementById('qrCodeDisplay').innerHTML = "";
-        var svgLogo = document.getElementById('orroLogo');
-        var qrContent = document.getElementById('eSIMNo').value;
-        console.log(qrContent.length)
-        var logoSize = qrContent.length > 120 ? 20 : 30
-        var qrImageSize = qrContent.length > 450 ? 600 : 300
-        var el = kjua({
-            text: qrContent,
-            ecLevel: 'H',
-            size: 300,
-            fill: '#00002a',
-            back: '#ffffff',
-            quiet: 0,
-            rounded: 40,
-            mode: 'image',
-            image: svgLogo,
-            mSize: logoSize,
-        });
-        el.filename = 'helloWorld!';
-        document.getElementById('qrCodeDisplay').appendChild(el);
-    };
+<script src="js/kjua.min.js"
+    integrity="sha256-W2J+hjPHzo6kBMPjLGkf5fGjWm3RoqrwTEne84uiInk="
+    crossorigin="anonymous"></script>
 
-    function handleEnterKey(keyCode) {
-        if (keyCode === 13) {
-            generateQR();
-        };
-    }
-</script>
+<script src="js/app.js"
+    integrity="sha256-Mi/hb/WWdK3wGuvl6pKwzj+QfW4R9+W9GsJ9C6Bgvdg="
+    crossorigin="anonymous"></script>
 
 </html>
