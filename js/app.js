@@ -20,8 +20,5 @@
         document.getElementById('qrCodeDisplay').appendChild(el);
     };
 
-    function handleEnterKey(keyCode) {
-        if (keyCode === 'Enter') {
-            generateQR();
-        };
-    }
+    document.getElementById('eSIMNo').addEventListener('keyup', (e) => {(e.key === 'Enter') ? generateQR() : undefined})
+    document.getElementById('goButton').addEventListener('click', generateQR)

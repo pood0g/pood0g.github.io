@@ -8,10 +8,12 @@
                 default-src 'self';
                 font-src 'self';
                 img-src 'self' data:;
-                script-src 'self' 'unsafe-inline';
+                style-src 'self';
+                script-src 'self';
                 ">
     <title>Orro eSIM QR Generator</title>
-    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/layout.css"
+        integrity="sha256-kRCcaUzYBrPaAekV2QKxSxKUY351Co+C3XiKP5940yU=" crossorigin="anonymous">
 
 </head>
 
@@ -24,9 +26,8 @@
     </div>
     <div>
         <label for="eSIMNo">eSIM Number:</label>
-        <input type="text" id="eSIMNo" name="eSIMNo" placeholder="Enter your eSIM number"
-            onkeyup="handleEnterKey(event.key)">
-        <button onclick="generateQR()">GO!</button>
+        <input type="text" id="eSIMNo" name="eSIMNo" placeholder="Enter your eSIM number">
+        <button id="goButton">GO!</button>
     </div>
     <!-- Empty div for QR code to display -->
     <div id="qrCodeDisplay"></div>
@@ -37,7 +38,7 @@
     crossorigin="anonymous"></script>
 
 <script src="js/app.js"
-    integrity="sha256-Mi/hb/WWdK3wGuvl6pKwzj+QfW4R9+W9GsJ9C6Bgvdg="
+    integrity="sha256-Nf7LwB01iauYtgQK+Hn5zGl0yT4i6i9fTyi4EQAX9/k="
     crossorigin="anonymous"></script>
 
 </html>
